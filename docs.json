@@ -1,0 +1,256 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "aspen",
+  "name": "KubeStacks",
+  "description": "KubeStacks is a fast, calm Kubernetes app. Run it on your desktop against every cluster in your kubeconfig, or in your cluster as a dashboard your whole team signs in to.",
+  "colors": {
+    "primary": "#2a78d6",
+    "light": "#5ea2f0",
+    "dark": "#2a78d6"
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "https://kubestacks.com"
+  },
+  "favicon": "/favicon.svg",
+  "fonts": {
+    "family": "Inter"
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "appearance": {
+    "default": "system"
+  },
+  "background": {
+    "color": {
+      "light": "#ffffff",
+      "dark": "#0c0c0e"
+    }
+  },
+  "styling": {
+    "eyebrows": "section",
+    "codeblocks": {
+      "theme": {
+        "light": "github-light",
+        "dark": "github-dark-default"
+      }
+    }
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Website",
+        "href": "https://kubestacks.com"
+      },
+      {
+        "type": "github",
+        "href": "https://github.com/KubeStacks/KubeStacks"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Download",
+      "href": "https://kubestacks.com/#download"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guides",
+        "icon": "book-open",
+        "groups": [
+          {
+            "group": "Get started",
+            "pages": [
+              "index",
+              "get-started/desktop",
+              "get-started/in-your-cluster",
+              "get-started/tour",
+              "get-started/sign-in"
+            ]
+          },
+          {
+            "group": "Clusters",
+            "pages": [
+              "clusters/connect",
+              "clusters/namespaces",
+              "clusters/permissions"
+            ]
+          },
+          {
+            "group": "Explore",
+            "pages": [
+              "explore/overview",
+              "explore/workloads",
+              "explore/pods",
+              "explore/nodes",
+              "explore/networking",
+              "explore/config-and-storage",
+              "explore/events",
+              "explore/details",
+              "explore/health",
+              "explore/finding-things"
+            ]
+          },
+          {
+            "group": "Make changes",
+            "pages": [
+              "changes/safely",
+              "changes/actions",
+              "changes/yaml",
+              "changes/create",
+              "changes/bulk",
+              "changes/read-only",
+              "changes/undo-and-activity"
+            ]
+          },
+          {
+            "group": "Debug",
+            "pages": [
+              "debug/logs",
+              "debug/shell",
+              "debug/port-forwarding"
+            ]
+          },
+          {
+            "group": "Metrics",
+            "pages": [
+              "metrics/live-usage",
+              "metrics/usage-history"
+            ]
+          },
+          {
+            "group": "Helm",
+            "pages": [
+              "helm/releases",
+              "helm/upgrade-and-rollback",
+              "helm/install",
+              "helm/local-charts"
+            ]
+          },
+          {
+            "group": "Custom resources",
+            "pages": [
+              "custom-resources/overview",
+              "custom-resources/built-in-views",
+              "custom-resources/write-a-view"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "In your cluster",
+        "icon": "server",
+        "groups": [
+          {
+            "group": "Run it in your cluster",
+            "pages": [
+              "server/overview",
+              "server/install",
+              "server/expose",
+              "server/upgrade"
+            ]
+          },
+          {
+            "group": "Sign-in",
+            "pages": [
+              "server/auth/tokens",
+              "server/auth/single-sign-on",
+              "server/auth/proxy"
+            ]
+          },
+          {
+            "group": "Operate",
+            "pages": [
+              "server/security",
+              "server/views",
+              "server/docker"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "server/helm-values",
+              "server/configuration"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Reference",
+        "icon": "library",
+        "groups": [
+          {
+            "group": "Reference",
+            "pages": [
+              "reference/keyboard-shortcuts",
+              "reference/view-format",
+              "reference/environment-variables",
+              "reference/resource-kinds",
+              "reference/privacy-and-security"
+            ]
+          },
+          {
+            "group": "Help",
+            "pages": [
+              "reference/troubleshooting",
+              "reference/faq"
+            ]
+          },
+          {
+            "group": "Project",
+            "pages": [
+              "changelog",
+              "reference/build-from-source"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "contextual": {
+    "options": ["copy", "view", "chatgpt", "claude"]
+  },
+  "search": {
+    "prompt": "Search the docs…"
+  },
+  "seo": {
+    "metatags": {
+      "og:site_name": "KubeStacks Docs"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/KubeStacks/KubeStacks",
+      "website": "https://kubestacks.com"
+    },
+    "links": [
+      {
+        "header": "KubeStacks",
+        "items": [
+          { "label": "Website", "href": "https://kubestacks.com" },
+          { "label": "Download", "href": "https://kubestacks.com/#download" },
+          { "label": "Releases", "href": "https://github.com/KubeStacks/KubeStacks/releases" }
+        ]
+      },
+      {
+        "header": "Project",
+        "items": [
+          { "label": "GitHub", "href": "https://github.com/KubeStacks/KubeStacks" },
+          { "label": "Contributing", "href": "https://github.com/KubeStacks/KubeStacks/blob/main/CONTRIBUTING.md" },
+          { "label": "Security", "href": "https://github.com/KubeStacks/KubeStacks/blob/main/SECURITY.md" },
+          { "label": "Sponsor", "href": "https://github.com/sponsors/kotapeter" }
+        ]
+      }
+    ]
+  },
+  "errors": {
+    "404": {
+      "redirect": false,
+      "title": "Nothing here",
+      "description": "This page doesn't exist, or it moved. Try the search, or start from the [introduction](/)."
+    }
+  }
+}

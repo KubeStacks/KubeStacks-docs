@@ -1,0 +1,75 @@
+---
+title: "Run it without Kubernetes"
+sidebarTitle: "With Docker"
+description: "Run the KubeStacks image anywhere containers run, showing one cluster from a kubeconfig."
+icon: "container"
+---
+
+The image also runs on its own, outside the cluster it shows: on a machine of its own, say, as a dashboard for a cluster a team shares. Give it a kubeconfig, and it shows one of its contexts to everyone who signs in, the same way it would from inside the cluster.
+
+```bash
+docker run --rm -p 8080:8080 \
+  -v "$PWD/kubeconfig:/kubeconfig:ro" -e KUBECONFIG=/kubeconfig \
+  -e KUBESTACKS_CONTEXT=production \
+  ghcr.io/kubestacks/kubestacks
+```
+
+Then open [http://localhost:8080](http://localhost:8080).
+
+- `KUBESTACKS_CONTEXT` picks the context to show; without it, the kubeconfig's current context.
+- The cluster is called by its context's name, unless `KUBESTACKS_CLUSTER_NAME` says otherwise.
+- KubeStacks listens on port 8080 (`KUBESTACKS_PORT`), and answers `/healthz` for health checks.
+
+Every setting is an environment variable here: see [Configuration](/server/configuration).
+
+## Whose credentials it uses
+
+That depends on how people sign in, exactly as in a cluster:
+
+- **With tokens** (the default), people's requests carry their own tokens. The kubeconfig only says where the cluster is and how to trust its certificate.
+- **With single sign-on or a proxy**, KubeStacks uses the kubeconfig's credentials to impersonate people. Give it a service account's, with permission to impersonate users and groups, and nothing more.
+
+<Warning>
+  The image has only Node.js and helm, so credential plugins like `aws eks get-token`, `gke-gcloud-auth-plugin` or `kubelogin` aren't in it. Use a kubeconfig whose user has a token or a client certificate.
+</Warning>
+
+Paths in a kubeconfig (to a certificate, say) are read relative to the kubeconfig's own folder, so mount those files next to it, or embed them with the `*-data` fields.
+
+## With single sign-on
+
+```bash
+docker run --rm -p 8080:8080 \
+  -v "$PWD/kubeconfig:/kubeconfig:ro" -e KUBECONFIG=/kubeconfig \
+  -e KUBESTACKS_CONTEXT=production \
+  -e KUBESTACKS_URL=https://kubestacks.example.com \
+  -e KUBESTACKS_AUTH=oidc \
+  -e KUBESTACKS_OIDC_ISSUER=https://dex.example.com \
+  -e KUBESTACKS_OIDC_CLIENT_ID=kubestacks \
+  -e KUBESTACKS_OIDC_CLIENT_SECRET \
+  -e KUBESTACKS_USERNAME_PREFIX=oidc: \
+  -e KUBESTACKS_GROUPS_PREFIX=oidc: \
+  ghcr.io/kubestacks/kubestacks
+```
+
+`-e KUBESTACKS_OIDC_CLIENT_SECRET` without a value passes the variable on from your shell, so the secret stays out of your shell history. Put TLS in front of KubeStacks with a reverse proxy, and set `KUBESTACKS_URL` to the address people open. See [Single sign-on](/server/auth/single-sign-on) for registering KubeStacks with your provider.
+
+## Pin a version
+
+Without a tag, Docker pulls `latest`, the latest release. Pin a version to know what runs:
+
+```bash
+docker run --rm -p 8080:8080 \
+  -v "$PWD/kubeconfig:/kubeconfig:ro" -e KUBECONFIG=/kubeconfig \
+  ghcr.io/kubestacks/kubestacks:1.2.0
+```
+
+Sessions live in KubeStacks' memory, so restarting the container signs everyone out.
+
+<Columns cols={2}>
+  <Card title="Configuration" icon="settings-2" href="/server/configuration">
+    Every environment variable.
+  </Card>
+  <Card title="Security" icon="shield-check" href="/server/security">
+    What KubeStacks is trusted with, and how to contain it.
+  </Card>
+</Columns>
