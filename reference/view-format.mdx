@@ -123,7 +123,7 @@ Columns and details are both fields.
   | `string` | Text | Alphabetically |
   | `number` | Right-aligned | As numbers |
   | `date` | "in 30d", "2h ago" | By time |
-  | `boolean` | Yes or No | |
+  | `boolean` | Yes or No | No before Yes |
   | `count` | How many values the path finds, or how many items a list has | As numbers |
 </ResponseField>
 
@@ -213,7 +213,7 @@ Labels, details, links, action texts and patches can include values from the obj
 | `{{ .path }}` | The value at a path; several are joined with commas |
 | `{{ .spec.issuerRef.kind ?? "Issuer" }}` | The value, or this text when the path finds nothing |
 | `{{ .spec.target.name ?? .metadata.name }}` | The value, or another path's |
-| `{{ now }}` | The current time, as Kubernetes writes times (in patches) |
+| `{{ now }}` | The current time, as Kubernetes writes times (most useful in patches) |
 
 ## Links
 

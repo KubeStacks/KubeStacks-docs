@@ -96,7 +96,7 @@ Leave `ingress.enabled` off, and point yours at the `kubestacks` Service, port 8
 
 ## Health checks
 
-KubeStacks answers `GET /healthz` (below the base path) with `200 ok`, for load balancers and probes. The chart's readiness probe checks it every 10 seconds, and its liveness probe every 20, restarting the pod after three failures.
+KubeStacks answers `GET /healthz` (below the base path) with `200 ok`, for load balancers and probes. The chart's readiness probe checks it every 10 seconds, and its liveness probe every 20, restarting KubeStacks after three failures in a row.
 
 ```bash
 curl https://kubestacks.example.com/healthz

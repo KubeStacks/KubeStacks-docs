@@ -9,16 +9,16 @@ This tour follows what you'd do on a day something breaks: see what's wrong, fin
 
 <Steps titleSize="h2">
   <Step title="See how the cluster is doing">
-    Every cluster opens on its **Overview**. Four tiles say how many nodes are ready, how many pods are running, how many workloads are healthy, and how many warnings came in the last hour. Each tile links to its list, already filtered to what's wrong.
+    Every cluster opens on its **Overview**. Four tiles say how many nodes are ready, how many pods are running, how many workloads are healthy, and how many warnings came in the last hour. Each tile links to its list, filtered to what's wrong when something is.
 
-    Below them, CPU and memory show what's in use next to what's requested, limited and allocatable, with the last hour as a line. **Needs attention** lists the objects in trouble, and **Recent warnings** the events that explain them.
+    Below them, CPU and memory show what's in use next to what's requested, limited and allocatable, with a line of recent usage. **Needs attention** lists the pods and workloads in trouble, and **Recent warnings** the events that explain them.
 
     <Frame>
       <img className="block dark:hidden" loading="lazy" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/overview-light-1x.webp" alt="A cluster's overview: nodes, pods and workloads, CPU and memory with their last hour, and what needs attention." />
       <img className="hidden dark:block" loading="lazy" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/overview-dark-1x.webp" alt="A cluster's overview: nodes, pods and workloads, CPU and memory with their last hour, and what needs attention." />
     </Frame>
 
-    The namespace menu at the top scopes every page. It starts in your kubeconfig context's namespace, and remembers your choice per cluster. [More about the overview](/explore/overview).
+    The namespace menu at the top scopes every list. It starts in your kubeconfig context's namespace, and remembers your choice per cluster. [More about the overview](/explore/overview).
   </Step>
 
   <Step title="Find what's failing">
@@ -73,7 +73,7 @@ This tour follows what you'd do on a day something breaks: see what's wrong, fin
       <img className="hidden dark:block" loading="lazy" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/command-palette-dark-1x.webp" alt="Finding anything in the cluster, or anything to do, from the keyboard." />
     </Frame>
 
-    Every view also has a <kbd>G</kbd> shortcut, shown when you hover it in the sidebar, and <kbd>?</kbd> lists them all. [Keyboard shortcuts](/reference/keyboard-shortcuts).
+    Most views also have a <kbd>G</kbd> shortcut, shown when you hover them in the sidebar, and <kbd>?</kbd> lists them all. [Keyboard shortcuts](/reference/keyboard-shortcuts).
   </Step>
 </Steps>
 

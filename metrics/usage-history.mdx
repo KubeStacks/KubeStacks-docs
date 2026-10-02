@@ -33,7 +33,7 @@ You usually don't have to do anything. Unless you've chosen a source, KubeStacks
     | 90 | The Prometheus operator's service (`operated-prometheus: "true"`), or one named `prometheus`, `prometheus-operated`, `prometheus-server`, `prometheus-k8s` or `…-prometheus` | One named `web`, `http-web` or `http`, else 9090 or 80 |
     | 85 | VictoriaMetrics single-node (`vmsingle`, `victoria-metrics`) | One named `http`, else 8429 or 8428 |
     | 80 | VictoriaMetrics' `vmselect` | One named `http`, else 8481, with the path `/select/0/prometheus` |
-    | 60 | Anything else with Prometheus in its name | As for 90 |
+    | 60 | Anything else with Prometheus in its name or labels | As for 90 |
 
     Services in a namespace named `monitoring`, `prometheus`, `observability` or `victoria-metrics` get 5 more.
   </Step>
@@ -88,7 +88,7 @@ Open it from the sidebar, or press <kbd>G</kbd> then <kbd>U</kbd>. It ranks what
 
 Under the chart:
 
-- **Summary tiles.** **Now**, **Average** and **Peak** for the total, and either **Of allocatable, on average** (for the whole cluster) or the busiest group. For restarts: how many, how many pods (or workloads…) restarted, which restarted most, and how often.
+- **Summary tiles.** **Now**, **Average** and **Peak** for the total, and either **Of allocatable, on average** (for the whole cluster) or the busiest group. For restarts: how many there were, how many pods (or workloads…) restarted, which restarted most, and how many times.
 - **A distribution.** How the groups spread out. **Click a band to filter** the table to it.
 - **A ranked table** of every group, with its now, average and peak, sortable.
 

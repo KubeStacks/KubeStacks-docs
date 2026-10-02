@@ -85,7 +85,7 @@ For anything past a first try, keep the chart's settings in a file, and install 
   ```
 </CodeGroup>
 
-The chart's version is the app's, so `--version 1.2.0` installs KubeStacks 1.2.0. Without it, Helm installs the latest.
+The chart's version is the app's, so `--version {{version}}` installs KubeStacks {{version}}. Without it, Helm installs the latest.
 
 ## Check that it's running
 
@@ -96,7 +96,7 @@ kubectl logs --namespace kubestacks deployment/kubestacks
 ```
 
 ```text
-2026-10-02T10:52:14.120Z KubeStacks 1.2.0 shows production (https://10.96.0.1:443) at http://localhost:8080/; people sign in with a token
+2026-10-02T10:52:14.120Z KubeStacks {{version}} shows production (https://10.96.0.1:443) at http://localhost:8080/; people sign in with a token
 ```
 
 After that, the log records who signs in and out, and what failed. A setting that doesn't make sense stops KubeStacks before it starts, and the log says which one and why, like:
@@ -112,7 +112,7 @@ The chart checks the same things where it can, so `helm install` fails first wit
 Each release of the image is signed with a build provenance attestation. With the [GitHub CLI](https://cli.github.com):
 
 ```bash
-gh attestation verify oci://ghcr.io/kubestacks/kubestacks:1.2.0 --repo KubeStacks/KubeStacks
+gh attestation verify oci://ghcr.io/kubestacks/kubestacks:{{version}} --repo KubeStacks/KubeStacks
 ```
 
 ## Next steps

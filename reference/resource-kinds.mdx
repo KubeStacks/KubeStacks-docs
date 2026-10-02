@@ -18,10 +18,10 @@ KubeStacks shows every kind your cluster serves. Nineteen common kinds have page
 | Deployments | `apps/v1` | Workloads tab | <kbd>G</kbd> <kbd>D</kbd> |
 | StatefulSets | `apps/v1` | Workloads tab | <kbd>G</kbd> <kbd>S</kbd> |
 | DaemonSets | `apps/v1` | Workloads tab | <kbd>G</kbd> <kbd>A</kbd> |
-| ReplicaSets | `apps/v1` | Their Deployment, or <kbd>⌘</kbd><kbd>K</kbd> | |
+| ReplicaSets | `apps/v1` | <kbd>⌘</kbd><kbd>K</kbd>, or **Controlled by** on their pods | |
 | Jobs | `batch/v1` | Workloads tab | <kbd>G</kbd> <kbd>J</kbd> |
 | CronJobs | `batch/v1` | Workloads tab | <kbd>G</kbd> <kbd>C</kbd> |
-| Autoscalers (HorizontalPodAutoscaler) | `autoscaling/v2` | Their workload, or <kbd>⌘</kbd><kbd>K</kbd> | |
+| Autoscalers (HorizontalPodAutoscaler) | `autoscaling/v2` | <kbd>⌘</kbd><kbd>K</kbd> | |
 | Services | `v1` | Sidebar → Network | <kbd>G</kbd> <kbd>V</kbd> |
 | Ingresses | `networking.k8s.io/v1` | Sidebar → Network | <kbd>G</kbd> <kbd>I</kbd> |
 | Network Policies | `networking.k8s.io/v1` | Sidebar → Network | |
@@ -59,7 +59,7 @@ The **Workloads** page lists Deployments, StatefulSets, DaemonSets, Jobs and Cro
 | --- | --- | --- | --- |
 | Nodes | Roles, CPU, Memory, Version | <span className="ks-status healthy">Ready</span>, <span className="ks-status critical">NotReady</span>, a condition like <span className="ks-status warning">MemoryPressure</span>, or <span className="ks-status warning">Cordoned</span> | Cordon, Uncordon, Drain… |
 | Namespaces | | <span className="ks-status healthy">Active</span>, or its phase, such as <span className="ks-status warning">Terminating</span> | |
-| Events | Type, Reason, Object, Message, Count, Last seen | Warning or Normal | None |
+| Events | Type, Reason, Object, Message, Count, Last seen | <span className="ks-status warning">Warning</span> or <span className="ks-status neutral">Normal</span> | None |
 
 The CPU and Memory columns of nodes are meters of live usage. Without [metrics-server](/metrics/live-usage), they show what's allocatable instead. Events have a list of their own, sorted by when they were last seen, with no Name or Age.
 
@@ -96,7 +96,7 @@ Custom resources, and Kubernetes' own less common kinds (Leases, PodDisruptionBu
 - **Columns.** The ones the API server prints for the kind, as `kubectl get` shows them (a CRD's printer columns), unless a [view](/custom-resources/built-in-views) gives it better ones.
 - **Status.** Read from the conventions most controllers follow: `Ready`-like conditions, `Stalled` and `Reconciling`, a spec the controller hasn't caught up with, suspension, or a phase. A view can set its own rules.
 - **Actions.** Edit labels, edit YAML and delete, like any kind. Kinds with the scale subresource (an Argo Rollout, say) can be scaled like Deployments, and views add actions of their own, like **Sync** or **Reconcile**.
-- **Sidebar.** The custom resources you opened last in a cluster are listed under **Custom resources**, and you can pin any kind to the sidebar.
+- **Sidebar.** The custom resources you opened last in a cluster are listed under **Custom resources**, and you can pin any of these kinds to the sidebar.
 
 <Frame caption="Every kind the cluster serves, custom resources included.">
   <img className="block dark:hidden" loading="lazy" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/api-resources-light-1x.webp" alt="The API resources page in KubeStacks, listing every kind the cluster serves, grouped by API group." />

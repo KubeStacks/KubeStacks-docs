@@ -53,6 +53,7 @@ KubeStacks follows [semantic versioning](https://semver.org): a fix is a patch r
   - **Workloads** of every kind in one list, with status, ready pods, autoscaler ranges and usage, and tables for 19 resource kinds with health, sorting, filters, label selectors and virtual scrolling.
   - **A detail panel** with kind-specific facts, containers, conditions, related pods, events, logs and YAML. Secret values stay hidden until revealed.
   - **Custom resources** and every other kind, found through API discovery, with views for cert-manager, Argo CD and Rollouts, Flux, Gateway API, Karpenter, KEDA, External Secrets, the Prometheus operator, CloudNativePG, Istio, Velero and Crossplane, and your own.
+  - **Logs** streamed as they're written, merged across a workload's pods, with search and filters.
   - **Usage history** from Prometheus or VictoriaMetrics, with a Metrics page and a Metrics tab on pods, workloads and nodes.
   - **Helm releases**, read from where Helm keeps them, with values, resources, notes and diffs between revisions.
 
@@ -60,13 +61,12 @@ KubeStacks follows [semantic versioning](https://semver.org): a fix is a patch r
 
   - **Actions** to scale, restart, change images, roll back, pause and resume rollouts, run CronJobs, suspend and resume, cordon, uncordon and drain, evict, force-delete, change autoscaler ranges, expand volumes, and edit labels and YAML.
   - **Shells, debug containers and port forwards.**
-  - **Helm upgrades, installs, rollbacks and uninstalls** with your own `helm`, after a server-side dry run.
+  - **Helm upgrades and installs**, reviewed as a server-side dry run first, and **rollbacks and uninstalls**, all with your own `helm`.
   - **Bulk actions** with progress per object and a retry for failures, and **create from YAML** with templates.
   - **Guard rails**: permission checks, the `kubectl` command in every dialog, typed confirmation for risky deletes, undo, an activity log and read-only mode.
 
-  ### Getting around
+  ### Around the app
 
-  - **Logs** streamed as they're written, merged across a workload's pods, with search and filters.
   - **A command palette**, keyboard shortcuts for every view, and light and dark themes.
   - **Calm errors**: banners when a cluster stops responding, last data kept on screen, and error pages with details to copy or report.
 

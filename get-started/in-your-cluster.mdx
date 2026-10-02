@@ -5,7 +5,7 @@ description: "Install KubeStacks with one Helm chart, and give your team a dashb
 icon: "server"
 ---
 
-KubeStacks also runs in a cluster, as a dashboard for that cluster. It's the same app as the desktop one, in a browser: people open its address, sign in, and see and change what their own Kubernetes permissions allow. Nobody installs anything, and a link to any page (a pod, its logs, a release) can be shared.
+KubeStacks also runs in a cluster, as a dashboard for that cluster. It's the same app as the desktop one, in a browser: people open its address, sign in, and see and change what their own Kubernetes permissions allow. Nobody installs anything, and a link to any page (a pod, a filtered list, a Helm release) can be shared.
 
 <Frame caption="KubeStacks served from a cluster, with the menu of who's signed in open.">
   <img className="block dark:hidden" loading="lazy" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/server-account-light-1x.webp" alt="KubeStacks served from a cluster: who's signed in, and their groups." />
@@ -85,7 +85,7 @@ It's the same app, so nearly everything in these docs applies to both. Served fr
 - **It shows one cluster**, the one it runs in. There's no list of clusters to switch between.
 - **There's no port forwarding**, since there's no computer of yours to forward a port to.
 - **Charts come from repositories, registries or URLs**, never from files on your computer.
-- **Preferences belong to each browser**: the theme, which clusters you've made read-only, and where usage history comes from.
-- **A few shortcuts belong to the browser**: <kbd>⌘</kbd><kbd>N</kbd> and <kbd>⌘</kbd><kbd>1</kbd>…<kbd>6</kbd>. The command palette (<kbd>⌘</kbd><kbd>K</kbd>) has those commands.
+- **Preferences belong to each browser**: the theme, whether you've made the cluster read-only for yourself, and where usage history comes from.
+- **A few shortcuts belong to the browser**: <kbd>⌘</kbd><kbd>N</kbd> and <kbd>⌘</kbd><kbd>1</kbd>…<kbd>6</kbd> (<kbd>Ctrl</kbd> on Windows and Linux). The command palette (<kbd>⌘</kbd><kbd>K</kbd>) has those commands.
 
-[Overview of KubeStacks in your cluster](/server/overview) covers how it works, and every setting.
+[KubeStacks in your cluster](/server/overview) covers how it works, and [Helm values](/server/helm-values) lists every setting.

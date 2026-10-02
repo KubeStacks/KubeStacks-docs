@@ -7,22 +7,22 @@ icon: "boxes"
 **Workloads** lists everything that runs pods, whatever its kind, so a failing Job and a degraded Deployment sort to the top together. Open it from the sidebar, with <kbd>G</kbd> then <kbd>W</kbd>, or with <kbd>⌘</kbd><kbd>2</kbd> in the desktop app (<kbd>Ctrl</kbd><kbd>2</kbd> on Windows and Linux).
 
 <Frame caption="Every workload, whatever its kind, in one list, with its health.">
-  <img className="block dark:hidden" loading="lazy" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/workloads-light-1x.webp" alt="The Workloads page: Deployments, StatefulSets, Jobs and CronJobs in one list with their status, pods, CPU, memory and images." />
-  <img className="hidden dark:block" loading="lazy" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/workloads-dark-1x.webp" alt="The Workloads page: Deployments, StatefulSets, Jobs and CronJobs in one list with their status, pods, CPU, memory and images." />
+  <img className="block dark:hidden" loading="lazy" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/workloads-light-1x.webp" alt="The Workloads page: Jobs, Deployments, DaemonSets, StatefulSets and pods in one list, failing ones first, with their status, pods, CPU, memory and images." />
+  <img className="hidden dark:block" loading="lazy" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/workloads-dark-1x.webp" alt="The Workloads page: Jobs, Deployments, DaemonSets, StatefulSets and pods in one list, failing ones first, with their status, pods, CPU, memory and images." />
 </Frame>
 
 ## What's in the list
 
 Every Deployment, StatefulSet, DaemonSet and CronJob, plus the Jobs, ReplicaSets and pods that nothing manages.
 
-Objects that only exist to run another are left out, so each workload appears once: the ReplicaSets a Deployment runs, and the Jobs a CronJob starts. You can still open any of them from the command palette (<kbd>⌘</kbd><kbd>K</kbd>), and every pod links to what controls it.
+Objects that only exist to run another are left out, so each workload appears once: the ReplicaSets a Deployment runs, and the Jobs a CronJob starts. The **Jobs** tab still lists every Job, the command palette (<kbd>⌘</kbd><kbd>K</kbd>) finds any ReplicaSet, and every pod links to what controls it.
 
 | Column | Shows |
 | --- | --- |
 | **Name** | The workload's name, with its namespace when you're looking at all of them |
 | **Type** | Deployment, StatefulSet, DaemonSet, Job, CronJob, ReplicaSet or Pod |
 | **Status** | Its [health](/explore/health), like <span className="ks-status healthy">Ready</span>, <span className="ks-status warning">Degraded</span> or <span className="ks-status critical">Failed</span> |
-| **Pods** | Ready pods of those wanted (`1/3`), or for Jobs, how many are done. An autoscaler's range follows, like `2–10`. |
+| **Pods** | Ready pods of those wanted (`1/3`), for Jobs how many are done (`0/1 done`), and for CronJobs how many runs are active. An autoscaler's range follows, like `2–10`. |
 | **CPU**, **Memory** | Live usage added up over the workload's pods, when [metrics-server](/metrics/live-usage) is there |
 | **Images** | The container images it runs |
 | **Age** | How long ago it was created |
@@ -66,6 +66,8 @@ Click a row, or move to it with <kbd>↑</kbd> <kbd>↓</kbd> and press <kbd>↵
 - **Logs** streams every pod's logs, merged in the order they were written. See [Logs](/debug/logs).
 - **Metrics** charts its CPU and memory over time against its requests and limits. See [Usage history](/metrics/usage-history).
 - **Events** and **YAML**, as for any object.
+
+A CronJob has no **Pods** or **Logs** tab: its runs are Jobs, which the **Jobs** tab lists.
 
 The panel is described in full in [Object details](/explore/details).
 

@@ -32,7 +32,7 @@ Secret values stay hidden until you ask for them.
 - **The list** shows each secret's type and how many keys it has. KubeStacks drops the values before the list reaches the page.
 - **Data** shows each key with its size, and its value as `••••••••`. Reveal one key with its eye button, or all of them with **Reveal all**. Values are decoded from base64 for you.
 - **Copy** next to a key copies its value without revealing it, for pasting somewhere safe.
-- **YAML** hides values too, until you choose **Reveal values**. The `kubectl.kubernetes.io/last-applied-configuration` annotation holds a copy of the values, so it's hidden as well: *Hidden: it holds the secret's values.*
+- **YAML** hides values too, until you choose **Reveal values**. The `kubectl.kubernetes.io/last-applied-configuration` annotation holds a copy of the values, so it's hidden as well. Under **Annotations** in **Overview**, it reads *Hidden: it holds the secret's values*.
 
 ### Editing a secret
 
@@ -47,7 +47,7 @@ When you edit a Secret's YAML, its text values appear decoded, under `stringData
 
 A claim is <span className="ks-status healthy">Bound</span> when it has a volume, and shows its phase otherwise, like <span className="ks-status warning">Pending</span>. Open one for its capacity and the size it asked for, its access and volume modes, and links to its storage class and volume.
 
-**Expand volume…** grows a bound claim. Pick the new size in Mi, Gi or Ti. It starts at twice the current size, and must be larger than it is now. If the claim's storage class doesn't allow expansion, KubeStacks says so instead of trying. See [Actions by kind](/changes/actions).
+**Expand volume…** grows a bound claim. Pick the new size in Mi, Gi or Ti. It starts at about twice the current size, and must be larger than it is now: volumes can't shrink. If the claim's storage class doesn't allow expansion, KubeStacks says so instead of trying. See [Actions by kind](/changes/actions).
 
 ## Volumes
 

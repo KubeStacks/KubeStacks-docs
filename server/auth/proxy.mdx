@@ -40,7 +40,7 @@ Use this when you already sign people in to internal tools with a proxy, or your
               app.kubernetes.io/name: oauth2-proxy
     ```
 
-    The network policy lets only the proxy's pods reach KubeStacks. Your cluster's network plugin has to enforce network policies for it to work. Leave the chart's ingress off: the ingress sends people to the proxy, and the proxy to KubeStacks.
+    The network policy lets only the proxy's pods reach KubeStacks. Your cluster's network plugin has to enforce network policies for it to work. Leave the chart's ingress off: your ingress sends people to the proxy, and the proxy sends them on to KubeStacks.
 
     <Warning>
       With `networkPolicy.enabled` and an empty `from`, the policy lets anything in on KubeStacks' port. Always name the proxy.

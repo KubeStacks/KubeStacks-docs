@@ -2,7 +2,10 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "aspen",
   "name": "KubeStacks",
-  "description": "KubeStacks is a fast, calm Kubernetes app. Run it on your desktop against every cluster in your kubeconfig, or in your cluster as a dashboard your whole team signs in to.",
+  "description": "KubeStacks is a calm, fast Kubernetes app. Run it on your desktop against every cluster in your kubeconfig, or in your cluster as a dashboard your whole team signs in to.",
+  "variables": {
+    "version": "1.2.0"
+  },
   "colors": {
     "primary": "#2a78d6",
     "light": "#5ea2f0",

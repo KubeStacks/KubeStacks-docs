@@ -33,7 +33,7 @@ That depends on how people sign in, exactly as in a cluster:
   The image has only Node.js and helm, so credential plugins like `aws eks get-token`, `gke-gcloud-auth-plugin` or `kubelogin` aren't in it. Use a kubeconfig whose user has a token or a client certificate.
 </Warning>
 
-Paths in a kubeconfig (to a certificate, say) are read relative to the kubeconfig's own folder, so mount those files next to it, or embed them with the `*-data` fields.
+Paths in a kubeconfig (to a certificate, say) are read relative to the kubeconfig's own folder, so mount those files next to it, or embed them with the `*-data` fields. The image runs as a non-root user (UID 65532), so make sure that user can read what you mount.
 
 ## With single sign-on
 
@@ -60,7 +60,7 @@ Without a tag, Docker pulls `latest`, the latest release. Pin a version to know 
 ```bash
 docker run --rm -p 8080:8080 \
   -v "$PWD/kubeconfig:/kubeconfig:ro" -e KUBECONFIG=/kubeconfig \
-  ghcr.io/kubestacks/kubestacks:1.2.0
+  ghcr.io/kubestacks/kubestacks:{{version}}
 ```
 
 Sessions live in KubeStacks' memory, so restarting the container signs everyone out.

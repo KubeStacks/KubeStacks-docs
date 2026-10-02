@@ -6,11 +6,11 @@ icon: "sliders-horizontal"
 
 Set these in a values file, and install or upgrade with `--values values.yaml`. The chart checks them against its schema, and refuses settings that don't make sense before anything is installed.
 
+To see the defaults, with a comment on each:
+
 ```bash
 helm show values oci://ghcr.io/kubestacks/charts/kubestacks
 ```
-
-prints the defaults, with a comment on each.
 
 ## The cluster and its address
 
@@ -113,7 +113,7 @@ prints the defaults, with a comment on each.
 </ResponseField>
 
 <ResponseField name="helm.allowPrivateCharts" type="boolean" default="false">
-  When `true`, charts may come from addresses inside private networks, such as a ChartMuseum or Harbor in your network. Unset, KubeStacks fetches charts only from public addresses. See [Security](/server/security#charts-and-private-networks).
+  When `true`, charts may come from addresses inside private networks, such as a ChartMuseum or Harbor in your network. When `false`, KubeStacks fetches charts only from public addresses. See [Security](/server/security#charts-and-private-networks).
 </ResponseField>
 
 <ResponseField name="helm.artifactHubUrl" type="string" default="https://artifacthub.io">

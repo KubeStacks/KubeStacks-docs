@@ -36,13 +36,13 @@ An action you can't take stays in the menu, disabled, with the reason: your acco
 | StatefulSets | Scale, Restart, Change image, Roll back |
 | DaemonSets | Restart, Change image, Roll back |
 | ReplicaSets | Scale |
-| Pods | Shell, Debug, Forward a port, Restart, Evict, Delete (or force-delete) |
+| Pods | Shell, Debug, Forward a port (desktop app), Restart, Evict, Delete (or force-delete) |
 | Jobs | Suspend, Resume |
 | CronJobs | Run now, Suspend, Resume, Change image |
 | Nodes | Cordon, Uncordon, Drain |
 | Autoscalers | Edit replica range |
 | Volume claims | Expand volume |
-| Services | Forward a port |
+| Services | Forward a port (desktop app) |
 | Custom resources | Scale (with the scale subresource), and their [view's](/custom-resources/built-in-views) actions |
 | Everything but events | Edit labels, Edit YAML, Delete |
 
@@ -99,10 +99,10 @@ Actions only show when they apply: **Uncordon** on a cordoned node, **Resume rol
   <Accordion title="Forward a port…" icon="cable">
     Forwards a port on your computer to a running pod, or to a service's pod. See [Port forwarding](/debug/port-forwarding).
 
-    <Note>**Desktop app only.** A browser has no computer of yours to forward a port to.</Note>
+    <Note>**Desktop app only:** a browser has no computer of yours to forward a port to.</Note>
   </Accordion>
   <Accordion title="Restart" icon="rotate-cw">
-    For pods that a controller manages. KubeStacks deletes the pod, it shuts down gracefully, and its controller starts a new one to replace it. The button reads **Restart pod**.
+    For pods that a controller manages. KubeStacks deletes the pod: it shuts down gracefully, and its controller starts a new one to replace it. The button reads **Restart pod**.
   </Accordion>
   <Accordion title="Evict…" icon="log-out">
     Evicts the pod through the Eviction API. Unlike a delete, evictions respect PodDisruptionBudgets: if the eviction would leave too few pods running, the cluster refuses, and nothing changes. The dialog says whether a controller will start a replacement.
@@ -159,7 +159,7 @@ Actions only show when they apply: **Uncordon** on a cordoned node, **Resume rol
 
 <AccordionGroup>
   <Accordion title="Edit replica range" icon="sliders-horizontal">
-    For HorizontalPodAutoscalers: set the **Minimum** and **Maximum** replicas. The minimum is at least 1, and can't be above the maximum. The dialog says what happens next: the workload scales up to a new minimum, down to a new maximum, or stays put when it's within the new range.
+    For HorizontalPodAutoscalers: set **Minimum replicas** and **Maximum replicas**. The minimum is at least 1, and can't be above the maximum. The dialog says what happens next: the workload scales up to a new minimum, down to a new maximum, or stays put when it's within the new range.
 
     Undo puts the previous range back.
   </Accordion>

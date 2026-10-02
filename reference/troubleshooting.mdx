@@ -35,7 +35,7 @@ KubeStacks tries to say what went wrong in plain words, and what to try next. On
   <Accordion title="Timed out: The cluster isn't responding" icon="clock">
     The API server accepted the connection, but didn't answer within 20 seconds. That's usually a busy or distant API server.
 
-    Try again in a moment. If it's always slow, give it longer with [`KUBESTACKS_REQUEST_TIMEOUT_MS`](/reference/environment-variables):
+    Try again in a moment. If it's always slow, give it longer with [`KUBESTACKS_REQUEST_TIMEOUT_MS`](/reference/environment-variables#setting-them). On macOS, quit KubeStacks, then:
 
     ```bash
     KUBESTACKS_REQUEST_TIMEOUT_MS=60000 open -a KubeStacks
