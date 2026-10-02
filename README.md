@@ -35,6 +35,7 @@ npx mint broken-links
 | `reference/`          | Shortcuts, settings, kinds, troubleshooting, FAQ                  |
 | `docs.json`           | Navigation, theme and colors                                      |
 | `style.css`           | The app's design tokens, key caps, screenshots and status pills   |
+| `screenshots.js`      | Swaps in full-size screenshots when one is zoomed                 |
 
 ## Writing
 
@@ -44,13 +45,18 @@ npx mint broken-links
 
   ```mdx
   <Frame caption="A short caption.">
-    <img className="block dark:hidden" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/overview-light-1x.webp" alt="…" />
-    <img className="hidden dark:block" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/overview-dark-1x.webp" alt="…" />
+    <img className="block dark:hidden" loading="lazy" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/overview-light-1x.webp" alt="…" />
+    <img className="hidden dark:block" loading="lazy" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/overview-dark-1x.webp" alt="…" />
   </Frame>
   ```
 
   Names and alt text are in the app's
   [`docs/screenshots/screenshots.json`](https://github.com/KubeStacks/KubeStacks/blob/main/docs/screenshots/screenshots.json).
+
+  Pages link the 1440 px files (`-1x.webp`), and `screenshots.js` swaps in the 2880 px,
+  lossless ones when a screenshot is zoomed. `loading="lazy"` keeps the browser from
+  downloading the theme that isn't showing. Mintlify drops `srcSet` from images, so this
+  is how to get both sizes.
 
 - **Write like the app.** Plain, calm, short sentences. Name buttons and menus exactly as the
   app does, in bold. Show keys as `<kbd>⌘</kbd><kbd>K</kbd>`.
