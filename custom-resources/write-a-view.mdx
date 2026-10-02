@@ -98,7 +98,7 @@ This guide builds a view for an in-house `Database` kind, step by step. Swap in 
     `health` is one of `healthy`, `progressing`, `warning`, `critical` or `neutral`: it picks the color, the icon, the sort order and the filter chip. `label` is what the status says, and `detail` shows on hover. Both are templates: `{{ .path }}` puts a value in, and `??` gives a fallback when the path finds nothing.
 
     <Tip>
-      Comparisons ignore case, so `equals: 'True'` matches Kubernetes' `"True"` even though YAML would read an unquoted `True` as a boolean.
+      Comparisons ignore case, so even an unquoted `equals: True`, which YAML reads as a boolean, matches Kubernetes' `"True"`.
     </Tip>
   </Step>
 
@@ -243,7 +243,7 @@ This guide builds a view for an in-house `Database` kind, step by step. Swap in 
 ## Good to know
 
 - **Quote templates and filters in YAML.** A value that starts with `{{` must be in quotes, or YAML reads it as a map. Quote paths with brackets or double quotes in them too, like `'.status.conditions[?(@.type=="Ready")].status'`.
-- **Your view wins.** A view of yours for a kind KubeStacks has a view for replaces KubeStacks'. To tweak a built-in one, copy it from [KubeStacks' views](https://github.com/KubeStacks/KubeStacks/tree/main/src/renderer/src/views) and edit it.
+- **Your view wins.** If you write a view for a kind KubeStacks already has one for, yours replaces it. To tweak a built-in one, copy it from [KubeStacks' views](https://github.com/KubeStacks/KubeStacks/tree/main/src/renderer/src/views) and edit it.
 - **Another folder.** Set `KUBESTACKS_VIEWS_DIR` to read views from somewhere else, like a folder your team shares in a Git repository.
 - **Limits.** KubeStacks reads up to 200 files from the folder (not its subfolders), each up to 256 KB.
 

@@ -30,8 +30,8 @@ Two cards show how much of the cluster's CPU and memory is in use, as a percenta
 
 - **The meter** shows usage, with a mark for what pods have requested.
 - **The sparkline** shows the **Last hour** when KubeStacks has found your [usage history](/metrics/usage-history), or the usage **Since you opened it** when it hasn't.
-- **Requests**, **Limits** and **Allocatable** add up what every pod asks for and is capped at, against what the nodes offer, with each as a share of allocatable.
-- **History** opens the [Metrics page](/metrics/usage-history) for a longer view.
+- **Requests**, **Limits** and **Allocatable** add up what every pod asks for and is capped at, against what the nodes offer. Requests and limits also show as a share of allocatable.
+- **History**, shown once usage history is found, opens the [Metrics page](/metrics/usage-history) for a longer view.
 
 Live usage comes from [metrics-server](/metrics/live-usage). Without it, the cards say **Live usage needs metrics-server** and show what's requested instead: *6.8 cores of 27.5 cores requested*.
 
@@ -41,7 +41,7 @@ A bar shows every pod by state: **Running**, **Starting**, **Warning**, **Failin
 
 ## Nodes
 
-Every node with its status, and meters for its CPU and memory use. A node under pressure, cordoned or not ready says so. Click one to open it. See [Nodes](/explore/nodes).
+Every node with its status and roles, and meters for its CPU and memory use (or its allocatable CPU and memory, without metrics-server). A node under pressure, cordoned or not ready says so. Click one to open it. See [Nodes](/explore/nodes).
 
 ## Needs attention
 

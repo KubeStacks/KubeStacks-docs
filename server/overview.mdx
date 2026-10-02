@@ -94,7 +94,7 @@ In a browser, every page has a real address: a list with its filters and sort or
 The image has Node.js, helm and KubeStacks, and nothing else. Each release is signed with a build provenance attestation, which the [GitHub CLI](https://cli.github.com) checks:
 
 ```bash
-gh attestation verify oci://ghcr.io/kubestacks/kubestacks:1.2.0 --repo KubeStacks/KubeStacks
+gh attestation verify oci://ghcr.io/kubestacks/kubestacks:{{version}} --repo KubeStacks/KubeStacks
 ```
 
 The Helm chart is `oci://ghcr.io/kubestacks/charts/kubestacks`. It's released with KubeStacks itself, so the chart's version is the app's.

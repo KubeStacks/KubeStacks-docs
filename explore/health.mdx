@@ -107,7 +107,7 @@ Kinds that KubeStacks has no page for, custom resources included, get a status r
 | pending, progress, creating, provisioning, initializing, starting, deploying, updating, upgrading, installing, reconciling, syncing, waiting, scaling, terminating, deleting, restoring, setting up | Progressing |
 | missing, warn | Warning |
 | suspend, pause, stopped | Neutral |
-| healthy, running, active, ready, available, bound, succeeded, complete, established, deployed, synced, online | Healthy |
+| healthy, running, active, ready, available, bound, succeeded or success, complete, established, deployed, synced, online | Healthy |
 
 A phase that matches none of them is neutral. An object with none of these fields shows <span className="ks-status neutral">Unknown</span>, and a kind whose objects have none gets no status column at all.
 

@@ -18,7 +18,7 @@ Before it offers an action, KubeStacks asks the cluster whether your account may
 
 > Your account can't delete pods in shop.
 
-The answers are cached for a few minutes. If the cluster can't answer, the action stays enabled and the cluster decides when you try. Either way, nothing gets past RBAC: KubeStacks only ever acts with your own credentials.
+The answers are cached for a few minutes. If the cluster can't answer, the action stays enabled and the cluster decides when you try. Either way, nothing gets past RBAC: KubeStacks only ever acts as you, with your own permissions.
 
 See [Permissions](/clusters/permissions) for what each feature needs.
 
@@ -26,7 +26,7 @@ See [Permissions](/clusters/permissions) for what each feature needs.
 
 Every dialog says what it changes and where:
 
-- **The object and the cluster.** The header names the object, its kind and namespace, and the kubeconfig context it's in.
+- **The object and the cluster.** The header names the object, its kind and namespace, and the cluster it's in.
 - **The equivalent command.** Under **Equivalent command**, the `kubectl` command that does the same thing, ready to copy. It's a good way to learn kubectl, and a record of what happened.
 - **What will happen.** Dialogs explain the effect in plain words: how a restart rolls out, which pods a drain evicts, whether a deleted pod comes back.
 

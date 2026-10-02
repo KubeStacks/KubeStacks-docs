@@ -1,7 +1,7 @@
 ---
 title: "Your clusters, at a glance"
 sidebarTitle: "Introduction"
-description: "KubeStacks is a calm, fast Kubernetes app. It shows what's healthy, what's struggling and where your capacity goes, and lets you fix things safely when they need it."
+description: "KubeStacks is a calm, fast Kubernetes app that shows what's healthy, what's struggling and where your capacity goes, and lets you fix things safely."
 icon: "layers"
 ---
 
@@ -36,10 +36,10 @@ It's the same app either way. Pick the one that fits, or use both.
     Every object gets a clear status, and problems sort to the top.
   </Card>
   <Card title="Usage next to capacity" icon="gauge" href="/metrics/live-usage">
-    Live CPU and memory against requests, limits and allocatable.
+    Live CPU and memory against requests, limits and what's allocatable.
   </Card>
   <Card title="Safe changes" icon="shield-check" href="/changes/safely">
-    Scale, restart, roll back or drain, with the `kubectl` shown and undo.
+    Scale, restart, roll back or drain, with the `kubectl` command shown, and undo.
   </Card>
   <Card title="Logs, merged" icon="scroll-text" href="/debug/logs">
     Every pod of a workload in one stream, in the order lines were written.
@@ -71,7 +71,7 @@ It's the same app either way. Pick the one that fits, or use both.
     Every change names the cluster and shows the equivalent `kubectl` command. YAML edits are checked by the cluster with a dry run and shown as a diff before they're saved. [Changing things safely](/changes/safely).
   </Accordion>
   <Accordion title="Hard to do by accident" icon="lock">
-    KubeStacks asks the cluster what you're allowed to do before offering it. Risky deletes, and anything in a cluster named like production, ask you to type the name first. [Read-only mode](/changes/read-only) turns changes off entirely.
+    KubeStacks asks the cluster what you're allowed to do before offering it. Risky deletes, and deletes in a cluster named like production, ask you to type the name first. [Read-only mode](/changes/read-only) turns changes off entirely.
   </Accordion>
   <Accordion title="Calm when things go wrong" icon="cloud-off">
     A lost connection shows a banner and keeps the last data on screen, instead of a blank window. Every error says what happened and what to try. [Troubleshooting](/reference/troubleshooting).
@@ -87,14 +87,14 @@ It's the same app either way. Pick the one that fits, or use both.
   <div><span className="ks-label">Kubernetes</span><span className="ks-value">1.25 or later</span></div>
   <div><span className="ks-label">kubectl</span><span className="ks-value">Not needed</span></div>
   <div><span className="ks-label">Helm</span><span className="ks-value">Only to change releases</span></div>
-  <div><span className="ks-label">Desktop</span><span className="ks-value">macOS 12, Windows 10, 64-bit Linux</span></div>
+  <div><span className="ks-label">Desktop</span><span className="ks-value">macOS 12+, Windows 10+, 64-bit Linux</span></div>
 </div>
 
-Live usage needs [metrics-server](https://github.com/kubernetes-sigs/metrics-server), and usage history needs a Prometheus or VictoriaMetrics in the cluster. Without them, everything else works, and KubeStacks shows requests and limits against capacity instead.
+Live usage needs [metrics-server](https://github.com/kubernetes-sigs/metrics-server), and usage history needs a Prometheus or VictoriaMetrics in the cluster. Everything else works without them, and without metrics-server, KubeStacks shows requests and limits against capacity instead.
 
 ## Free and open source
 
-KubeStacks is free under the Apache 2.0 license, with no telemetry and no accounts. It talks to your clusters and nothing else, apart from the few things you ask for, listed in [Privacy and security](/reference/privacy-and-security).
+KubeStacks is free under the Apache 2.0 license, with no telemetry and no accounts. It talks to your clusters, and otherwise only to GitHub to look for new versions (which you can turn off) and to Artifact Hub when you search it for charts. See [Privacy and security](/reference/privacy-and-security).
 
 <Columns cols={2}>
   <Card title="Star it on GitHub" icon="star" href="https://github.com/KubeStacks/KubeStacks" horizontal>

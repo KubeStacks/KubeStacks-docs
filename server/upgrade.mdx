@@ -22,7 +22,7 @@ The desktop app updates itself. In a cluster, KubeStacks is upgraded like anythi
 
       ```bash To a particular version
       helm upgrade kubestacks oci://ghcr.io/kubestacks/charts/kubestacks \
-        --namespace kubestacks --values values.yaml --version 1.2.0
+        --namespace kubestacks --values values.yaml --version {{version}}
       ```
 
       ```bash Keeping the values you set before
@@ -61,7 +61,7 @@ Helm keeps the previous revision, so going back is one command:
 helm rollback kubestacks --namespace kubestacks
 ```
 
-`helm history kubestacks --namespace kubestacks` lists the revisions, and `helm rollback kubestacks <revision>` goes back to a particular one.
+`helm history kubestacks --namespace kubestacks` lists the revisions, and `helm rollback kubestacks <revision> --namespace kubestacks` goes back to a particular one.
 
 <Columns cols={2}>
   <Card title="Changelog" icon="book-open" href="/changelog">

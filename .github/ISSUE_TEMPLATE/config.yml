@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: A problem with KubeStacks itself
+    url: https://github.com/KubeStacks/KubeStacks/issues/new/choose
+    about: Bugs and ideas for the app go to the KubeStacks repository.
+  - name: Report a security vulnerability
+    url: https://github.com/KubeStacks/KubeStacks/security/advisories/new
+    about: Please report vulnerabilities privately.

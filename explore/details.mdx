@@ -14,7 +14,7 @@ Click any row, or move to it with <kbd>↑</kbd> <kbd>↓</kbd> and press <kbd>�
 
 ## The header
 
-At the top: the object's kind, namespace and age, its name (with a button to copy it), and its status. Below them are the actions you'll use most for that kind, like **Edit YAML**, **Scale** or **Cordon**, and **⋯** for the rest. Press <kbd>.</kbd> to open that menu from the keyboard. (<kbd>⌘</kbd> is <kbd>Ctrl</kbd> on Windows and Linux.)
+At the top: the object's kind, namespace and age, its name (with a button to copy it), and its status. Below them are the actions you'll use most for that kind, like **Scale**, **Restart**, **Shell** or **Cordon**, and **⋯** for the rest. Press <kbd>.</kbd> to open that menu from the keyboard. (<kbd>⌘</kbd> is <kbd>Ctrl</kbd> on Windows and Linux.)
 
 | Control | Shortcut |
 | --- | --- |
@@ -32,10 +32,10 @@ Each kind gets the tabs that make sense for it:
 | Tab | Shown for |
 | --- | --- |
 | **Overview** | Everything |
-| **Pods** | Workloads, services, nodes, and custom kinds that scale pods (like Argo Rollouts) |
-| **Logs** | Pods, workloads and services. A workload's or service's logs merge every pod's. |
+| **Pods** | Deployments, StatefulSets, DaemonSets, ReplicaSets, Jobs, services, nodes, and custom kinds that scale pods (like Argo Rollouts) |
+| **Logs** | Pods, and the same kinds as **Pods** except nodes. A workload's or service's logs merge every pod's. |
 | **Shell** | Pods |
-| **Metrics** | Pods, nodes and workloads |
+| **Metrics** | Pods, nodes, and Deployments, StatefulSets, DaemonSets, ReplicaSets, Jobs and CronJobs |
 | **Events** | Everything but events |
 | **YAML** | Everything |
 

@@ -8,8 +8,8 @@ icon: "lock"
 Read-only mode is for the clusters you only want to look at: production on a busy day, a customer's cluster, a shared machine. KubeStacks shows everything as usual, and changes nothing.
 
 <Frame caption="A cluster made read-only: KubeStacks won't change anything in it until allowed.">
-  <img className="block dark:hidden" loading="lazy" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/read-only-light-1x.webp" alt="A read-only cluster in KubeStacks: the Read-only badge in place of the actions, explaining that KubeStacks won't change anything in this cluster until allowed." />
-  <img className="hidden dark:block" loading="lazy" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/read-only-dark-1x.webp" alt="A read-only cluster in KubeStacks: the Read-only badge in place of the actions, explaining that KubeStacks won't change anything in this cluster until allowed." />
+  <img className="block dark:hidden" loading="lazy" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/read-only-light-1x.webp" alt="A deployment in a read-only cluster: a Read-only badge next to its actions, and its actions menu open with every action disabled and the note that changes are turned off for this cluster." />
+  <img className="hidden dark:block" loading="lazy" src="https://cdn.jsdelivr.net/gh/KubeStacks/KubeStacks@main/docs/screenshots/read-only-dark-1x.webp" alt="A deployment in a read-only cluster: a Read-only badge next to its actions, and its actions menu open with every action disabled and the note that changes are turned off for this cluster." />
 </Frame>
 
 ## For one cluster
@@ -23,7 +23,7 @@ Read-only mode is for the clusters you only want to look at: production on a bus
   </Tab>
 </Tabs>
 
-A read-only cluster has a lock next to its name. Where an object's actions would be, a **Read-only** badge says changes are off; choose it, then **Allow changes**, to turn them back on.
+A read-only cluster has a lock next to its name. Next to an object's actions, a **Read-only** badge says changes are off; choose it, then **Allow changes**, to turn them back on.
 
 KubeStacks remembers which clusters you made read-only, by their kubeconfig context name.
 
@@ -33,13 +33,20 @@ Set `KUBESTACKS_READ_ONLY` to `1` (or `true`) in the environment KubeStacks star
 
 <CodeGroup>
   ```bash macOS
-  KUBESTACKS_READ_ONLY=1 /Applications/KubeStacks.app/Contents/MacOS/KubeStacks
+  # Quit KubeStacks first, so it starts with the variable.
+  KUBESTACKS_READ_ONLY=1 open -a KubeStacks
+  ```
+
+  ```bash Linux (.deb, .rpm)
+  KUBESTACKS_READ_ONLY=1 kubestacks
   ```
 
   ```bash Linux (AppImage)
   KUBESTACKS_READ_ONLY=1 ./KubeStacks-*-linux-x86_64.AppImage
   ```
 </CodeGroup>
+
+To set it for every launch, or on Windows, see [Setting environment variables](/reference/environment-variables#setting-them).
 
 ## What it turns off
 
@@ -65,7 +72,7 @@ Actions that are off stay visible, disabled, with "Changes are turned off for th
 When KubeStacks runs in your cluster as a shared dashboard, read-only works at two levels:
 
 - **For everyone.** Set `readOnly: true` in the Helm chart's values (`KUBESTACKS_READ_ONLY=true` when you run the image another way). Nobody changes anything through KubeStacks, whatever their RBAC allows. The switch shows "For everyone, on this server". See [Helm values](/server/helm-values).
-- **For yourself.** Anyone can make the cluster read-only for themselves from the cluster switcher or the command palette. It's remembered by their browser, and the server enforces it for their session.
+- **For yourself.** Anyone can make the cluster read-only for themselves from the cluster switcher or the command palette. It's kept in their browser, and the server enforces it for them.
 
 <Note>
   Read-only mode is a guard rail in KubeStacks, not a permission. To keep someone from changing a cluster at all, give their account read-only RBAC, like the built-in `view` ClusterRole. See [Permissions](/clusters/permissions).

@@ -40,7 +40,7 @@ KubeStacks looks at what the cluster serves again every minute, so a CRD you jus
 
 ### A short sidebar, however many CRDs
 
-A cluster can have hundreds of custom resource definitions, so the sidebar doesn't list them all. Its **Custom resources** section keeps the five kinds you opened most recently in this cluster, and **API resources** with a count of the rest.
+A cluster can have hundreds of custom resource definitions, so the sidebar doesn't list them all. Its **Custom resources** section keeps the five kinds you opened most recently in this cluster, and **API resources**, with a count of every custom kind the cluster serves.
 
 To keep a kind at hand, **pin** it: use the pin button on its list, or next to it in **API resources**. Pinned kinds get a **Pinned** section in the sidebar, in every cluster that serves them.
 
@@ -64,18 +64,21 @@ Each object gets a status read from the conventions most controllers follow, che
   <Step title="Stuck">
     A `Stalled` condition that's `True` (as [kstatus](https://github.com/kubernetes-sigs/cli-utils/tree/master/pkg/kstatus) defines it) is <span className="ks-status critical">critical</span>, labeled with its reason.
   </Step>
-  <Step title="Its main condition">
-    The first of `Ready`, `Available`, `Healthy`, `Programmed`, `Established`, `Succeeded` or `Accepted` that it has. `False` is <span className="ks-status critical">critical</span> (unless the object says it's still working on it), and `True` is <span className="ks-status healthy">healthy</span>.
+  <Step title="Its main condition is False">
+    The first of `Ready`, `Available`, `Healthy`, `Programmed`, `Established`, `Succeeded` or `Accepted` that it has. If it's `False`, the object is <span className="ks-status critical">critical</span>, labeled with its reason, unless the object says it's still working on it.
   </Step>
   <Step title="Catching up">
-    A `Reconciling` condition, or a spec the controller hasn't caught up with yet (`status.observedGeneration` behind `metadata.generation`), is <span className="ks-status progressing">Reconciling</span>.
+    A `Reconciling` or `Issuing` condition that's `True`, or a spec the controller hasn't caught up with yet (`status.observedGeneration` behind `metadata.generation`), is progressing: <span className="ks-status progressing">Reconciling</span>, or the condition's reason.
+  </Step>
+  <Step title="Its main condition is True">
+    `True` is <span className="ks-status healthy">healthy</span>, labeled with the condition's name, like Ready. `Unknown` is progressing.
   </Step>
   <Step title="A health or a phase">
     Failing that, an Argo-style `status.health.status`, or `status.phase` or `status.state`, read by its words: "Failed" or "Degraded" are critical, "Pending" or "Provisioning" are progressing, "Running" or "Bound" are healthy, and so on.
   </Step>
 </Steps>
 
-Objects with none of these show as <span className="ks-status neutral">neutral</span>, and are never sorted above real problems. A view's status rules take over from all of this. See [Health and status](/explore/health) for how statuses sort and filter.
+Objects with none of these show <span className="ks-status neutral">Unknown</span>, and are never sorted above real problems. A view's status rules take over from all of this. See [Health and status](/explore/health) for how statuses sort and filter.
 
 ### The detail panel
 
@@ -87,7 +90,7 @@ On Kubernetes 1.27 and later, KubeStacks reads each kind's schema from the clust
 
 Custom resources are first-class:
 
-- **Create** them from YAML (<kbd>⌘</kbd><kbd>N</kbd>), checked by the cluster before anything is created. The cluster has to serve a kind before you can create objects of it, so create a new CRD on its own first. See [Create from YAML](/changes/create).
+- **Create** them from YAML (<kbd>⌘</kbd><kbd>N</kbd> in the desktop app), checked by the cluster before anything is created. The cluster has to serve a kind before you can create objects of it, so create a new CRD on its own first. See [Create from YAML](/changes/create).
 - **Edit** their YAML or labels. Edits are validated by the cluster against the CRD's schema with a dry run, and shown as a diff before they're saved. See [Edit YAML](/changes/yaml).
 - **Delete** them, one or many at once. Deleting a CustomResourceDefinition asks you to type its name first, since it deletes every object of that kind.
 - **Scale** kinds that have the scale subresource, like Argo Rollouts, the same way as a Deployment.

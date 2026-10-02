@@ -31,7 +31,7 @@ Each entry is a file, named with `.yaml` or `.yml` at the end, with one or more 
 
 ## Check them
 
-**API resources** (in the sidebar, or <kbd>⌘</kbd><kbd>K</kbd>) shows which view each kind uses, and lists anything wrong with the views. A view with a problem isn't used at all, and the problem says where it is.
+**API resources** (in the sidebar, or <kbd>⌘</kbd><kbd>K</kbd>, <kbd>Ctrl</kbd><kbd>K</kbd> on Windows and Linux) shows which view each kind uses, and lists anything wrong with the views. A view with a problem isn't used at all, and the problem says where it is.
 
 Views are data only. They read fields with JSONPath, and change objects only with the patches they spell out. Their actions go through the same checks as KubeStacks' own: the cluster is asked first whether the person may make the change, the equivalent `kubectl` command is shown, and a read-only KubeStacks stays read-only.
 

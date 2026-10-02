@@ -31,7 +31,7 @@ When the API server trusts your provider, [pass people's tokens on](/server/auth
 - **The browser holds only a random ID**, 32 bytes, in the `kubestacks-session` cookie. It's `HttpOnly`, `SameSite=Lax`, and `Secure` when `url` starts with `https:` or the proxy in front sends `X-Forwarded-Proto: https`.
 - **Sessions live in KubeStacks' memory.** Restarting it signs everyone out, and nothing about them is written to disk. For the same reason the chart runs one replica.
 - **Sessions last 12 hours** unless `auth.sessionHours` says otherwise, at most a week. People signing out end their session in every tab.
-- **Single sign-on uses the authorization code flow with PKCE.** The state, PKCE verifier and nonce stay in a short-lived cookie, signed by KubeStacks, for at most 10 minutes. The ID token's signature, issuer, audience and nonce are checked against the provider's keys.
+- **Single sign-on uses the authorization code flow with PKCE.** The state, PKCE verifier and nonce stay in a short-lived cookie, signed by KubeStacks, for at most 10 minutes. The ID token's signature is checked against the provider's keys, and its issuer, audience and nonce against what KubeStacks expects.
 - **Only KubeStacks' own pages can sign in with a token, sign out, or connect.** Those requests, and the WebSocket, must come from KubeStacks' own origin.
 
 ## The page
